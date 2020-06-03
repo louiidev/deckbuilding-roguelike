@@ -1,2 +1,2 @@
-# raylib-rs-ecs-template
-A starter template for raylib(rust bindings) with specs for ECS
+# A deckbuilding roguelike
+A small deckbuilding roguelike, currently working on for a game jam
