@@ -1,0 +1,17 @@
+[
+    (
+        name: "Small Dager",
+        value: 4,
+        effect_description: "Flip over \nrandom card"
+    ),
+    (
+        name: "Helping sword",
+        value: 4,
+        effect_description: "draw 1 card"
+    ),
+    (
+        name: "test 3",
+        value: 3,
+        effect_description: "testing 3"
+    )
+]

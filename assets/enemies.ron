@@ -1,0 +1,21 @@
+
+[
+    (
+        name: "Snake",
+        health: 10,
+        attack: 5,
+        open: false
+    ),
+    (
+        name: "Dragon",
+        health: 22,
+        attack: 4,
+        open: false
+    ),
+    (
+        name: "Turtle",
+        health: 40,
+        attack: 1,
+        open: false
+    )
+]
