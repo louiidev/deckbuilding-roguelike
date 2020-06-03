@@ -1,6 +1,7 @@
-use specs::{Component, VecStorage};
+use specs::{Component, VecStorage, NullStorage};
 use raylib::math::Vector2;
 use std::ops::{Mul, Add, AddAssign, Sub, SubAssign, MulAssign, Div, DivAssign, Neg};
+use serde::{Serialize, Deserialize};
 
 #[derive(Component, Debug, PartialEq, Default, Copy, Clone)]
 #[storage(VecStorage)]
@@ -177,8 +178,86 @@ impl Into<Vector2> for Position {
 
 #[derive(Component, Debug, Default, Clone, Copy)]
 #[storage(VecStorage)]
-pub struct Transform {
+pub struct Rectangle {
     pub width: f32,
     pub height: f32,
-    pub position: Position
+}
+
+#[derive(Component, Debug, Default, Clone)]
+#[storage(VecStorage)]
+pub struct Sprite {
+    pub texture_path: String,
+    pub scale: f32,
+}
+
+#[derive(Component, Debug, Default, Deserialize, Clone)]
+#[storage(VecStorage)]
+pub struct Card {
+    pub value: i8,
+    pub name: String,
+    pub effect_description: String,
+}
+
+#[derive(Component, Debug, Default, Deserialize, Clone)]
+#[storage(VecStorage)]
+pub struct Enemy {
+    pub name: String,
+    pub health: i8,
+    pub attack: i8,
+    pub open: bool
+}
+
+#[derive(Component, Debug, Default, Clone, Copy)]
+#[storage(VecStorage)]
+pub struct HealthBar {
+    pub max: i8,
+    pub current: i8
+}
+
+impl HealthBar {
+    pub fn new(health: i8) -> Self {
+        HealthBar {
+            max: health,
+            current: health
+        }
+    }
+}
+
+#[derive(Component, Debug, Default, Clone)]
+#[storage(NullStorage)]
+pub struct Player;
+
+
+#[derive(Component, Debug, Default, Clone)]
+#[storage(NullStorage)]
+pub struct Mousehandler;
+
+#[derive(Component, Debug, Default, Clone, Copy)]
+#[storage(VecStorage)]
+pub struct Button {
+    pub text: &'static str,
+    pub action: &'static str,
+    pub color: [u8; 3],
+    pub hover: bool
+}
+
+impl Button {
+    pub fn new(text: &'static str, action: &'static str) -> Self {
+        Button {
+            text,
+            action,
+            color: [200, 55, 50],
+            hover: false
+        }
+    }
+}
+
+#[derive(Component, Debug, Default, Clone, Copy)]
+#[storage(VecStorage)]
+pub struct Active(pub bool);
+
+impl Active {
+    pub fn default() -> Self {
+        Active(true)
+    }
 }

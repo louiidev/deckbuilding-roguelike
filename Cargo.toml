@@ -11,3 +11,4 @@ raylib = { git = "https://github.com/deltaphc/raylib-rs", branch = "master" }
 specs = { version = "0.16.1", features = ["specs-derive"] }
 serde = "1.0.104"
 ron = "0.5.1"
+rand = "0.7.3"
